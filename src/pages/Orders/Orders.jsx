@@ -6,13 +6,13 @@ import deleveryBox from "../../assets/deleveryBox.png";
 const Orders = () => {
   const [data, setData] = useState([]);
   const fetchOrders = async () => {
-    const response = await axios.get("https://foodsapi-1.onrender.com/api/orders/all");
+    const response = await axios.get("http://localhost:8080/api/orders/all");
     setData(response.data);
   };
 
   const statusHandler = async (event, orderId) => {
     const response = await axios.patch(
-      `https://foodsapi-1.onrender.com/api/orders/status/${orderId}?status=${event.target.value}`
+      `http://localhost:8080/api/orders/status/${orderId}?status=${event.target.value}`
     );
     if (response.status === 200) {
       await fetchOrders();
